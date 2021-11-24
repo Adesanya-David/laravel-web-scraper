@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['prefix' => 'dashboard'], function() {
+    Route::resource('/websites', 'WebsitesController');
+    Route::resource('/categories', 'CategoriesController');
+    Route::resource('/links', 'LinksController');
+    Route::resource('/item-schema', 'ItemSchemaController');
+    Route::resource('/articles', 'ArticlesController');
 });

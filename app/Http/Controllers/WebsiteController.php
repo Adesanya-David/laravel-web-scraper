@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class CategoriesController extends Controller
+class WebsiteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,6 @@ class CategoriesController extends Controller
     public function index()
     {
         //
-        $cats = Category::orderBy('id', 'DESC')->paginate(10);
-
-        return view('dashboard.category.index')->withCategories($cats);
     }
 
     /**
@@ -27,7 +24,6 @@ class CategoriesController extends Controller
     public function create()
     {
         //
-        return view('dashboard.category.create');
     }
 
     /**
@@ -39,17 +35,6 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         //
-        $this->validate($request, [
-            'title' => 'required'
-        ]);
-
-        $cat = new Category;
-
-        $cat->title = $request->input('title');
-
-        $cat->save();
-
-        return redirect()->route('categories.index');
     }
 
     /**
@@ -61,7 +46,6 @@ class CategoriesController extends Controller
     public function show($id)
     {
         //
-
     }
 
     /**
@@ -73,7 +57,6 @@ class CategoriesController extends Controller
     public function edit($id)
     {
         //
-        return view('dashboard.category.edit')->withCategory(Category::find($id));
     }
 
     /**
@@ -86,17 +69,6 @@ class CategoriesController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $this->validate($request, [
-            'title' => 'required'
-        ]);
-
-        $cat = Category::find($id);
-
-        $cat->title = $request->input('title');
-
-        $cat->save();
-
-        return redirect()->route('categories.index');
     }
 
     /**
@@ -108,6 +80,5 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         //
-        
     }
 }
